@@ -9,10 +9,10 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import dev.geminileft.hadoop_core.CustomTextOutputFormat;
 import dev.geminileft.hadoop_tools.mappers.RecordCountMapper;
 import dev.geminileft.hadoop_tools.reducers.RecordCountReducer;
 
@@ -28,7 +28,7 @@ public class RecordCountJob extends Configured implements Tool {
 		Job job = Job.getInstance(conf, "RecordCountJob");
 		
 		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(TextOutputFormat.class);
+		job.setOutputFormatClass(CustomTextOutputFormat.class);
 		job.setJarByClass(RecordCountJob.class);
 		
 		
